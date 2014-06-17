@@ -86,7 +86,7 @@ public class TestGameOfLife
 	}
 	
 	@Test
-	public void  TestFutureGrid()
+	public void  TestPresentGridVoidFutureGridVoid()
 	{
 		boolean[][] grid = new boolean[10][10];
 		boolean[][] result = Cell.nextGrid(grid);
@@ -94,6 +94,35 @@ public class TestGameOfLife
 		assertArrayEquals(" la griglia futura sarà vuota come la precedente",expected,result);
 	}
 	
+	@Test
+	public void TestPresentGridNotVoidFutureGridVoid()
+	{
+		boolean[][] grid = new boolean[10][10];
+		grid[2][2] = true;
+		grid[5][5] = true;
+		grid[7][2] = true;
+		boolean[][] result = Cell.nextGrid(grid);
+		boolean[][] expected = new boolean[10][10];
+		assertArrayEquals(" la griglia presente ha solo celle isolate quindi la futura sarà vuota ",expected,result);
+	}
+	
+	@Test
+	public void TestPresentGridNotVoidFutureGridNotVoid()
+	{
+		boolean[][] grid = new boolean[10][10];
+		grid[2][2] = true;
+		grid[2][3] = true;
+		grid[3][3] = true;
+		grid[5][5] = true;
+		grid[7][2] = true;
+		boolean[][] result = Cell.nextGrid(grid);
+		boolean[][] expected = new boolean[10][10];
+		expected[2][2] = true;
+		expected[2][3] = true;
+		expected[3][3] = true;
+		expected[3][2] = true;
+		assertArrayEquals(" la griglia presente ha tre vicini vivi quindi la futura avrà quattro vicini vivi",expected,result);
+	}
 	
 	
 	
