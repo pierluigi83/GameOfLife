@@ -1,0 +1,58 @@
+   	0 1 2 3 4 5 6 7 8 9
+   0        T T T
+   1
+   2	    T T	
+   3          T
+   4
+   5		  T
+   6
+   7        T
+   8
+   9
+   
+   
+    	0 1 2 3 4 5 6 7 8 9
+   0          T
+   1        
+   2
+   3	    T T	
+   4        T T
+   5
+   6		  
+   7
+   8        
+   9
+   10
+   
+   
+   io controllo all'interno della griglia, restano esclusi bordi
+   
+    	0 1 2 3 4 5 6 7 8 9
+   0          T
+   1        
+   2
+   3	    T T	
+   4        T T
+   5
+   6		  
+   7
+   8        
+   9
+   10
+   
+   00 ha vicini: 01,10,11  le coordinate delle righe colonne dei bordi sono:
+   grid[0][]
+   grid[length -1][]
+   grid[][0]
+   grid[][length-1]
+   le coordinate dei bordi sono:
+   grid[0][0]
+   grid[0][length-1]
+   grid[length-1][0]
+   grid[length-1][length-1]
+   
+   in realtà si potrebbe fare con un'unica funzione che controlla se una coppia di coordinate relative ad un punto sono valide
+   se non lo sono, si può capire che punto è in base al numero di coppie inesistenti
+   se è 5 allora è un vertice(in quanto ha solo tre vicini + sè stesso)
+   se è 3 allora è sul bordo (in quanto ha 5 vicini + sè stesso)
+   se la griglia va estesa, lo dice il bordo, quindi basta controllare ogni linea di bordo e decidere in che direzione espandersi
